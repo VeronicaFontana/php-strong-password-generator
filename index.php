@@ -2,13 +2,15 @@
   $error = "";
 
   include __DIR__ . "/partials/functions.php";
-  
 
   if(isset($_POST["lunghezza"])){
     if($_POST["lunghezza"] === "8" || $_POST["lunghezza"] === "16" || $_POST["lunghezza"] === "24" || $_POST["lunghezza"] === "32"){
       $psw = passGen();
+      session_start();
+      $_SESSION["psw"] = $psw;
+      header("Location: arrival.php");
     }else{
-      echo "non funziona";
+      $error = "Errore! Selezionare un numero di caratteri per la password";
     }
   }
 
@@ -32,9 +34,7 @@
     <h2 class="text-light">Genera una password sicura</h2>
     <div class="bg-info-subtle p-2">
       <p>Scegliere una password con un minimo di 8 caratteri e un massimo di 32 caratteri</p>
-      <?php if(isset($psw)): ?>
-      <span>Password: <?php echo $psw ?></span>
-      <?php endif; ?>
+      <p class="text-danger"><?php echo $error ?></p>
     </div>
     <form action="index.php" method="POST" class="mt-4 bg-light p-3">
       <div class="d-flex mb-3 justify-content-between ">
@@ -49,7 +49,6 @@
       </div>
       <div class="text-start">
         <button class="btn btn-primary">Invia</button>
-        <button class="btn btn-secondary">Annulla</button>
       </div>
     </form>
   </div>
