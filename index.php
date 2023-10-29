@@ -1,8 +1,5 @@
 <?php
   $error = "";
-  $password = "";
-  
-  $numLettArr = [1,2,3,4,5,6,7,8,9,"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 
   function passGen(){
     for($i = 0; $i < $_POST["lunghezza"]; $i++){
@@ -10,19 +7,25 @@
       $randomNum[] = $random;
     }
     var_dump($randomNum);
-    return $randomNum;
+
+    foreach($randomNum as $number){
+      $numLettArr = [1,2,3,4,5,6,7,8,9,"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+      $password[] = $numLettArr[$number];
+      $psw = implode(" ", $password);
+    }
+    var_dump($password);
+    var_dump($psw);
   }
 
   if(isset($_POST["lunghezza"])){
-    echo "ok";
     if($_POST["lunghezza"] === "8"){
-      echo passGen();
+      passGen();
     }elseif($_POST["lunghezza"] === "16"){
-      echo passGen();
+      passGen();
     }elseif($_POST["lunghezza"] === "24"){
-      echo passGen();
+      passGen();
     }elseif($_POST["lunghezza"] === "32"){
-      echo passGen();
+      passGen();
     }else{
       echo "non funziona";
     }
@@ -48,6 +51,7 @@
     <h2 class="text-light">Genera una password sicura</h2>
     <div class="bg-info-subtle p-2">
       <p>Scegliere una password con un minimo di 8 caratteri e un massimo di 32 caratteri</p>
+      <span>Password: <?php echo $psw ?></span>
     </div>
     <form action="index.php" method="POST" class="mt-4 bg-light p-3">
       <div class="d-flex mb-3 justify-content-between ">
