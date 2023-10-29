@@ -1,16 +1,28 @@
 <?php
   $error = "";
+  $password = "";
+  
+  $numLettArr = [1,2,3,4,5,6,7,8,9,"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+
+  function passGen(){
+    for($i = 0; $i < $_POST["lunghezza"]; $i++){
+      $random = rand(1, 61);
+      $randomNum[] = $random;
+    }
+    var_dump($randomNum);
+    return $randomNum;
+  }
 
   if(isset($_POST["lunghezza"])){
     echo "ok";
-    if($_POST["lunghezza"] === "1"){
-      echo "8";
-    }elseif($_POST["lunghezza"] === "2"){
-      echo "16";
-    }elseif($_POST["lunghezza"] === "3"){
-      echo "24";
-    }elseif($_POST["lunghezza"] === "4"){
-      echo "32";
+    if($_POST["lunghezza"] === "8"){
+      echo passGen();
+    }elseif($_POST["lunghezza"] === "16"){
+      echo passGen();
+    }elseif($_POST["lunghezza"] === "24"){
+      echo passGen();
+    }elseif($_POST["lunghezza"] === "32"){
+      echo passGen();
     }else{
       echo "non funziona";
     }
@@ -42,10 +54,10 @@
         <span>Lunghezza password:</span>
         <select name="lunghezza" class="form-select w-50" aria-label="Default select example">
           <option selected>Numero di caratteri</option>
-          <option value="1">8</option>
-          <option value="2">16</option>
-          <option value="3">24</option>
-          <option value="4">32</option>
+          <option value="8">8</option>
+          <option value="16">16</option>
+          <option value="24">24</option>
+          <option value="32">32</option>
         </select>
       </div>
       <div class="text-start">
