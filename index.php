@@ -3,6 +3,17 @@
 
   if(isset($_POST["lunghezza"])){
     echo "ok";
+    if($_POST["lunghezza"] === "1"){
+      echo "8";
+    }elseif($_POST["lunghezza"] === "2"){
+      echo "16";
+    }elseif($_POST["lunghezza"] === "3"){
+      echo "24";
+    }elseif($_POST["lunghezza"] === "4"){
+      echo "32";
+    }else{
+      echo "non funziona";
+    }
   }
 
 ?>
@@ -34,7 +45,7 @@
           <option value="1">8</option>
           <option value="2">16</option>
           <option value="3">24</option>
-          <option value="3">32</option>
+          <option value="4">32</option>
         </select>
       </div>
       <div class="text-start">
