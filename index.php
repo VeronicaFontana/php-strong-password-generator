@@ -1,31 +1,12 @@
 <?php
   $error = "";
 
-  function passGen(){
-    for($i = 0; $i < $_POST["lunghezza"]; $i++){
-      $random = rand(1, 61);
-      $randomNum[] = $random;
-    }
-    var_dump($randomNum);
-
-    foreach($randomNum as $number){
-      $numLettArr = [1,2,3,4,5,6,7,8,9,"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-      $password[] = $numLettArr[$number];
-      $psw = implode(" ", $password);
-    }
-    var_dump($password);
-    var_dump($psw);
-  }
+  include __DIR__ . "/partials/functions.php";
+  
 
   if(isset($_POST["lunghezza"])){
-    if($_POST["lunghezza"] === "8"){
-      passGen();
-    }elseif($_POST["lunghezza"] === "16"){
-      passGen();
-    }elseif($_POST["lunghezza"] === "24"){
-      passGen();
-    }elseif($_POST["lunghezza"] === "32"){
-      passGen();
+    if($_POST["lunghezza"] === "8" || $_POST["lunghezza"] === "16" || $_POST["lunghezza"] === "24" || $_POST["lunghezza"] === "32"){
+      $psw = passGen();
     }else{
       echo "non funziona";
     }
@@ -51,7 +32,9 @@
     <h2 class="text-light">Genera una password sicura</h2>
     <div class="bg-info-subtle p-2">
       <p>Scegliere una password con un minimo di 8 caratteri e un massimo di 32 caratteri</p>
+      <?php if(isset($psw)): ?>
       <span>Password: <?php echo $psw ?></span>
+      <?php endif; ?>
     </div>
     <form action="index.php" method="POST" class="mt-4 bg-light p-3">
       <div class="d-flex mb-3 justify-content-between ">
